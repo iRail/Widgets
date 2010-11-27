@@ -1,21 +1,18 @@
-this is a collection of all widgets on the iRail api. You can use it to show public transport information on your site
+This is a collection of all widgets on the iRail api. You can use it to show public transport information on your site
 
 = Authors =
 ===========
 
-Tim Esselens <tim . esselens aŧ gmail>
-
-Pieter Colpaert <pieter aŧ iRail be>
-
-Mathias Baert <mathiasbaert aŧ gmail>
+- Tim Esselens <tim . esselens aŧ gmail>
+- Pieter Colpaert <pieter aŧ iRail be>
+- Mathias Baert <mathiasbaert aŧ gmail>
+- Yeri Tiete <yeri aŧ iRail be> 
 
 = Links =
 =========
 
 The jQuery wrapper:
-
 http://github.com/iRail/iRailForJQuery
 
 The iRail project:
-
 http://project.iRail.be
