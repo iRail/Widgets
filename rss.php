@@ -9,7 +9,7 @@
 //data layer: get the right data
 
 $lastBuildDate;
-$data;
+$data = array();
 
 $file_handle = fopen("data/Gent.txt", "r");
 //$line = fgets($file_handle);
@@ -26,6 +26,11 @@ while (!feof($file_handle) && $line != "") {
      $line = fgets($file_handle);
 }
 fclose($file_handle);
+if(sizeof($data) == 0){
+     $data[0] = array("Wed, 02 Mar 2011 22:00:00 +0001", "http://iRail.be", "No delays to be shown");
+
+}
+
 
 //output layer: output the data according to the RSS specs.
 
