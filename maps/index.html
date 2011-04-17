@@ -11,23 +11,30 @@
     <script src="js/openstreetmap.js"></script>
   </head>
   <body onload="init();">
-    <div id="map"></div>
 
 <a href="http://openov.nl/"><img src="http://openov.nl/images/openov.png" alt="openOV" style="position: fixed; position: absolute; bottom: 0; right: 0; z-index: 1003; border: 0;" /></a>
-  <a href="http://iRail.be/"><img src="https://static.0x04.com/2011/04/projectiRail.png" alt="iRail" style="position: fixed; position: absolute; top: 0; right: 0; z-index: 1003; border: 0;" /></a>
-
-<script>
- // Optimized asynchronous Analytics snippet: http://mths.be/aab
- var _gaq = [['_setAccount', 'UA-263695-8'], ['_trackPageview']];
- (function(d, t) {
-  var g = d.createElement(t),
+    <div id="map"></div>
+    <div style="position: fixed; position: absolute; top: 0; right: 0; z-index: 1003; border: 0;">
+      <a href="http://iRail.be/"><img src="https://static.0x04.com/2011/04/projectiRail.png" alt="iRail" border="0"/></a>
+      <form name="settings" action="" method="GET">
+	<select name="system" onchange="settings.submit()"> 
+	  <option name="" value="">Select Company
+	  <option name="NMBS" value="NMBS">NMBS/SNCB
+	  <option name="MIVB" value="MIVB">MIVB/STIB
+	</select>
+      </form>
+    </div>
+    <script>
+      // Optimized asynchronous Analytics snippet: http://mths.be/aab
+      var _gaq = [['_setAccount', 'UA-263695-8'], ['_trackPageview']];
+      (function(d, t) {
+      var g = d.createElement(t),
       s = d.getElementsByTagName(t)[0];
-  g.async = 1;
-  g.src = '//www.google-analytics.com/ga.js';
-  s.parentNode.insertBefore(g, s);
- }(document, 'script'));
-</script>
-
+      g.async = 1;
+      g.src = '//www.google-analytics.com/ga.js';
+      s.parentNode.insertBefore(g, s);
+      }(document, 'script'));
+    </script>
   </body>
 </html>
 
