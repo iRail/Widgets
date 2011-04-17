@@ -11,8 +11,8 @@ This is a collection of all widgets on the iRail API. You can use it to show pub
 = Links =
 =========
 
-The jQuery wrapper:
-http://github.com/iRail/iRailForJQuery
-
 The iRail project:
 http://project.iRail.be
+
+iRail:
+http://iRail.be
