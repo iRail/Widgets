@@ -1,6 +1,6 @@
 This is a collection of all widgets on the iRail API. You can use it to show public transport information on your site.
 
-= Authors =
+ Authors 
 ===========
 
 - Tim Esselens <tim . esselens aŧ gmail>
@@ -8,7 +8,7 @@ This is a collection of all widgets on the iRail API. You can use it to show pub
 - Mathias Baert <mathiasbaert aŧ gmail>
 - Yeri Tiete <yeri aŧ iRail be> 
 
-= Links =
+ Links 
 =========
 
 The iRail project:
