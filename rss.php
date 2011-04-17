@@ -28,7 +28,6 @@ while (!feof($file_handle) && $line != "") {
 fclose($file_handle);
 if(sizeof($data) == 0){
      $data[0] = array("Wed, 02 Mar 2011 22:00:00 +0001", "http://iRail.be", "No delays to be shown");
-
 }
 
 
