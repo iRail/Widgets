@@ -1,5 +1,17 @@
 var map = null;
 
+var system;
+
+//if there is a system parameter with another system
+name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+var regexS = "[\\?&]system=([^&#]*)";
+var regex = new RegExp( regexS );
+var results = regex.exec( window.location.href );
+if( results == null )
+    system = "NMBS";
+else
+    system = results[1];
+
 // initialise the 'map' object
 function init() {
 
@@ -11,12 +23,11 @@ function init() {
   // complex object of type OpenLayers.Map
   map = new OpenLayers.Map('map');
   var layerTileNL = new OpenLayers.Layer.OSM("OpenStreetMap", "http://tile.openstreetmap.nl/tiles/${z}/${x}/${y}.png", {numZoomLevels: 19});
-  //var ov_zones_overlay = new OpenLayers.Layer.OSM("Zonekaart", "http://tiles.mijndev.openstreetmap.nl:8080/ov-zones/${z}/${x}/${y}.png", {attribution: '<br />Zones via <a href="http://www.agi-rws.nl/">AGI-RWS</a>', numZoomLevels: 19, isBaseLayer:false, visibility:true});
-
+  
   var halteStyleMap = new OpenLayers.StyleMap(OpenLayers.Util.applyDefaults({fillColor: "orange", fillOpacity: 0.5, strokeColor: "red", pointRadius: 5}, OpenLayers.Feature.Vector.style["default"]));
 
 
-  var haltes = new OpenLayers.Layer.GML("Haltes", "http://dev.api.irail.be/stations/?format=kml", 
+  var haltes = new OpenLayers.Layer.GML("Haltes", "http://dev.api.irail.be/stations/?format=kml&system="+system, 
                                 {
 				  styleMap: halteStyleMap,
                                   projection: new OpenLayers.Projection("EPSG:4326"),
@@ -48,11 +59,11 @@ function onPopupClose(evt) {
 function queryGovi(tpc) {
     /* Zou natuurlijk nog mooier zijn om deze requests asynchroon te doen */
     xmlhttp=new XMLHttpRequest();
-    xmlhttp.open("GET","http://api.irail.be/liveboard/?id="+tpc,false);
+    xmlhttp.open("GET","http://api.irail.be/liveboard/?id="+tpc+"&system="+system,false);
     xmlhttp.send();
     xmlDoc=xmlhttp.responseXML;
 
-    output = ''
+    output = '';
     trips = xmlDoc.getElementsByTagName("departure");
     for (i = 0; i < trips.length; i++)
     {
@@ -65,7 +76,6 @@ function queryGovi(tpc) {
             output   += '<b>'+expected+' <font color="red">+' + delay + '\'</font>' + '</b>' + '&nbsp;'+ name + '<br />';
 	}else{
             output   += '<b>'+expected+'</font>' + '</b>' + '&nbsp;'+ name + '<br />';
-
 	}
 
     }
