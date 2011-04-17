@@ -1,3 +1,3 @@
 <?php
-header('location: http://liveboards.irail.be');
+header('location: liveboard.html');
 ?>
