@@ -25,7 +25,7 @@ function init() {
   var layerTileNL = new OpenLayers.Layer.OSM("OpenStreetMap", "http://tile.openstreetmap.nl/tiles/${z}/${x}/${y}.png", {numZoomLevels: 19});
 
   var twitterStyleMap = new OpenLayers.StyleMap(OpenLayers.Util.applyDefaults({fillColor: "blue", fillOpacity: 0.5, strokeColor: "blue", pointRadius: 5}, OpenLayers.Feature.Vector.style["default"]));  
-  var halteStyleMap = new OpenLayers.StyleMap(OpenLayers.Util.applyDefaults({fillColor: "orange", fillOpacity: 0.5, strokeColor: "red", pointRadius: 3}, OpenLayers.Feature.Vector.style["default"]));
+  var halteStyleMap = new OpenLayers.StyleMap(OpenLayers.Util.applyDefaults({fillColor: "orange", fillOpacity: 0.5, strokeColor: "red", pointRadius: 4}, OpenLayers.Feature.Vector.style["default"]));
 
   var twitter = new OpenLayers.Layer.GML("Twitter", "tweets.php",
                                 {
