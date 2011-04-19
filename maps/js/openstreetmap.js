@@ -41,13 +41,9 @@ function init() {
                                 });
     map.addLayers([layerTileNL, haltes, twitter]);
   
-  selectControl = new OpenLayers.Control.SelectFeature(haltes, {onSelect: onFeatureSelect, onUnselect: onFeatureUnselect});
+    selectControl = new OpenLayers.Control.SelectFeature(new Array(haltes,twitter), {onSelect: onFeatureSelect, onUnselect: onFeatureUnselect});
   map.addControl(selectControl);
   selectControl.activate();
-
-  selectControl2 = new OpenLayers.Control.SelectFeature(twitter, {onSelect: onFeatureSelect2, onUnselect: onFeatureUnselect});
-  map.addControl(selectControl2);
-  selectControl2.activate();
 
   // center map
   if (!map.getCenter()) {
@@ -101,28 +97,20 @@ function addzero(i){
 
 function onFeatureSelect(feature) {
   selectedFeature = feature;
-
+    var popup;
+    if(feature.layer.name == "Haltes"){
   popup = new OpenLayers.Popup.FramedCloud("chicken", 
                                      feature.geometry.getBounds().getCenterLonLat(),
                                      new OpenLayers.Size(400,200),
                                      "<div style='font-size:.8em; width: auto;'><h3>"+feature.attributes.name+"</h3>"+queryGovi(feature.fid)+"</div>",
                                      null, true, onPopupClose);
-        
-  
-  feature.popup = popup;
-  map.addPopup(popup);
-  popup.autoSize = true; 
-}
-
-function onFeatureSelect2(feature) {
-  selectedFeature = feature;
-
-  popup = new OpenLayers.Popup.FramedCloud("chicken", 
+    }else if(feature.layer.name == "Twitter"){
+	popup = new OpenLayers.Popup.FramedCloud("chicken", 
                                      feature.geometry.getBounds().getCenterLonLat(),
                                      new OpenLayers.Size(400,200),
-                                     "<div style='font-size:.8em; width: auto;'><h3>"+feature.attributes.name+"</h3>"+"</div>",
+                                     "<div style='font-size:.8em; width: auto;'><h3>"+feature.attributes.name+"</h3></div>",
                                      null, true, onPopupClose);
-        
+    }
   
   feature.popup = popup;
   map.addPopup(popup);
