@@ -16,28 +16,38 @@ else
 function init() {
 
   // start position for the map (hardcoded here for simplicity)
-  var lat = 50.9;
-  var lon = 4.3;
-  var zoom = 9; 
+  var lat = 50.85;
+  var lon = 4.6;
+  var zoom = 9;
 
   // complex object of type OpenLayers.Map
   map = new OpenLayers.Map('map');
   var layerTileNL = new OpenLayers.Layer.OSM("OpenStreetMap", "http://tile.openstreetmap.nl/tiles/${z}/${x}/${y}.png", {numZoomLevels: 19});
-  
-  var halteStyleMap = new OpenLayers.StyleMap(OpenLayers.Util.applyDefaults({fillColor: "orange", fillOpacity: 0.5, strokeColor: "red", pointRadius: 5}, OpenLayers.Feature.Vector.style["default"]));
 
+  var twitterStyleMap = new OpenLayers.StyleMap(OpenLayers.Util.applyDefaults({fillColor: "blue", fillOpacity: 0.5, strokeColor: "blue", pointRadius: 5}, OpenLayers.Feature.Vector.style["default"]));  
+  var halteStyleMap = new OpenLayers.StyleMap(OpenLayers.Util.applyDefaults({fillColor: "orange", fillOpacity: 0.5, strokeColor: "red", pointRadius: 3}, OpenLayers.Feature.Vector.style["default"]));
 
+  var twitter = new OpenLayers.Layer.GML("Twitter", "tweets.php",
+                                {
+				  styleMap: twitterStyleMap,
+                                  projection: new OpenLayers.Projection("EPSG:4326"),
+                                  format: OpenLayers.Format.KML
+                                });
   var haltes = new OpenLayers.Layer.GML("Haltes", "http://dev.api.irail.be/stations/?format=kml&system="+system, 
                                 {
 				  styleMap: halteStyleMap,
                                   projection: new OpenLayers.Projection("EPSG:4326"),
                                   format: OpenLayers.Format.KML
                                 });
-    map.addLayers([layerTileNL, haltes]);
+    map.addLayers([layerTileNL, haltes, twitter]);
   
   selectControl = new OpenLayers.Control.SelectFeature(haltes, {onSelect: onFeatureSelect, onUnselect: onFeatureUnselect});
   map.addControl(selectControl);
   selectControl.activate();
+
+  selectControl2 = new OpenLayers.Control.SelectFeature(twitter, {onSelect: onFeatureSelect2, onUnselect: onFeatureUnselect});
+  map.addControl(selectControl2);
+  selectControl2.activate();
 
   // center map
   if (!map.getCenter()) {
@@ -96,6 +106,21 @@ function onFeatureSelect(feature) {
                                      feature.geometry.getBounds().getCenterLonLat(),
                                      new OpenLayers.Size(400,200),
                                      "<div style='font-size:.8em; width: auto;'><h3>"+feature.attributes.name+"</h3>"+queryGovi(feature.fid)+"</div>",
+                                     null, true, onPopupClose);
+        
+  
+  feature.popup = popup;
+  map.addPopup(popup);
+  popup.autoSize = true; 
+}
+
+function onFeatureSelect2(feature) {
+  selectedFeature = feature;
+
+  popup = new OpenLayers.Popup.FramedCloud("chicken", 
+                                     feature.geometry.getBounds().getCenterLonLat(),
+                                     new OpenLayers.Size(400,200),
+                                     "<div style='font-size:.8em; width: auto;'><h3>"+feature.attributes.name+"</h3>"+"</div>",
                                      null, true, onPopupClose);
         
   
