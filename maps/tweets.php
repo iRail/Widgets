@@ -7,6 +7,10 @@
 //First let's do the searches
 $urls = array("http://search.twitter.com/search.json?q=NMBS&rpp=100",
 	      "http://search.twitter.com/search.json?q=railtime&rpp=100",
+	      "http://search.twitter.com/search.json?q=De Lijn&rpp=100",
+	      "http://search.twitter.com/search.json?q=TEC&rpp=100",
+	      "http://search.twitter.com/search.json?q=STIB&rpp=100",
+	      "http://search.twitter.com/search.json?q=MIVB&rpp=100",
 	      "http://search.twitter.com/search.json?q=SNCB&rpp=100");
 $tweets = array();
 foreach($urls as $url){
