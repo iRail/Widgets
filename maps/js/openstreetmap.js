@@ -108,7 +108,7 @@ function onFeatureSelect(feature) {
 	popup = new OpenLayers.Popup.FramedCloud("chicken", 
                                      feature.geometry.getBounds().getCenterLonLat(),
                                      new OpenLayers.Size(400,200),
-                                     "<div style='font-size:.8em; width: auto;'><h3>"+feature.attributes.name+"</h3></div>",
+						 "<div style='font-size:.8em; width: auto;'>"+feature.attributes.name+"</div>",
                                      null, true, onPopupClose);
     }
   
