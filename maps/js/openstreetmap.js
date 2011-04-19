@@ -65,7 +65,7 @@ function onPopupClose(evt) {
 function queryGovi(tpc) {
     /* Zou natuurlijk nog mooier zijn om deze requests asynchroon te doen */
     xmlhttp=new XMLHttpRequest();
-    xmlhttp.open("GET","http://api.irail.be/liveboard/?id="+tpc+"&system="+system,false);
+    xmlhttp.open("GET","http://dev.api.irail.be/liveboard/?id="+tpc+"&system="+system,false);
     xmlhttp.send();
     xmlDoc=xmlhttp.responseXML;
 
