@@ -41,7 +41,7 @@ $i = 0;
 foreach($tweets as $tweet){
      $tt = strtotime($tweet[4]);
      $dd = date("d/m/y H:i",$tt);
-     echo "<Placemark id='". $i ."'><name><![CDATA[<img src=\"".$tweet[3]."\"/><from><strong>". $tweet[2] ."</strong></from> - <time><i>". $dd ."</i></time><br/>". $tweet[0] ."]]></name><description></description><Point><coordinates>". $tweet[1][1] .",". $tweet[1][0]."</coordinates></Point></Placemark>";
+     echo "<Placemark id='". $i ."'><name><![CDATA[<img src=\"".$tweet[3]."\"/><br/><from><strong>". $tweet[2] ."</strong></from> - <time><i>". $dd ."</i></time><br/>". $tweet[0] ."]]></name><p><description></description></p><Point><coordinates>". $tweet[1][1] .",". $tweet[1][0]."</coordinates></Point></Placemark>";
      $i ++;
 }
 echo "</kml>";
