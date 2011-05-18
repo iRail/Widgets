@@ -33,7 +33,7 @@ function init() {
                                   projection: new OpenLayers.Projection("EPSG:4326"),
                                   format: OpenLayers.Format.KML
                                 });
-  var haltes = new OpenLayers.Layer.GML("Haltes", "http://dev.api.irail.be/stations/?format=kml&system="+system, 
+  var haltes = new OpenLayers.Layer.GML("Haltes", "http://api.irail.be/stations/?format=kml&system="+system, 
                                 {
 				  styleMap: halteStyleMap,
                                   projection: new OpenLayers.Projection("EPSG:4326"),
@@ -65,7 +65,7 @@ function onPopupClose(evt) {
 function queryGovi(tpc) {
     /* Zou natuurlijk nog mooier zijn om deze requests asynchroon te doen */
     xmlhttp=new XMLHttpRequest();
-    xmlhttp.open("GET","http://dev.api.irail.be/liveboard/?id="+tpc+"&system="+system,false);
+    xmlhttp.open("GET","http://api.irail.be/liveboard/?id="+tpc+"&system="+system,false);
     xmlhttp.send();
     xmlDoc=xmlhttp.responseXML;
 
