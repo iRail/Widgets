@@ -12,6 +12,11 @@ if( results == null )
 else
     system = results[1];
 
+if( system == "MIVB" ){
+    alert("MIVB/STIB temporarily unavailable");
+    system = "NMBS";
+}
+
 // initialise the 'map' object
 function init() {
 

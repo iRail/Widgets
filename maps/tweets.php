@@ -8,9 +8,9 @@
 $urls = array("http://search.twitter.com/search.json?q=NMBS&rpp=100",
 	      "http://search.twitter.com/search.json?q=railtime&rpp=100",
 //	      "http://search.twitter.com/search.json?q=De%20Lijn&rpp=100", → gave stupid results of people on diet
-	      "http://search.twitter.com/search.json?q=TEC&rpp=100",
-	      "http://search.twitter.com/search.json?q=STIB&rpp=100",
-	      "http://search.twitter.com/search.json?q=MIVB&rpp=100",
+//	      "http://search.twitter.com/search.json?q=TEC&rpp=100",
+//	      "http://search.twitter.com/search.json?q=STIB&rpp=100",
+//	      "http://search.twitter.com/search.json?q=MIVB&rpp=100",
 	      "http://search.twitter.com/search.json?q=%23NS&rpp=100",
 	      "http://search.twitter.com/search.json?q=SNCB&rpp=100");
 $tweets = array();
