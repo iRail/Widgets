@@ -38,7 +38,7 @@ function init() {
                                   projection: new OpenLayers.Projection("EPSG:4326"),
                                   format: OpenLayers.Format.KML
                                 });
-  var haltes = new OpenLayers.Layer.GML("Haltes", "http://api.irail.be/stations/?format=kml&system="+system, 
+  var haltes = new OpenLayers.Layer.GML("Haltes", "http://data.irail.be/"+system+"/Stations.kml", 
                                 {
 				  styleMap: halteStyleMap,
                                   projection: new OpenLayers.Projection("EPSG:4326"),
